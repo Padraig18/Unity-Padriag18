@@ -12,7 +12,19 @@ public class movehero : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-     transform.  
+        {if (Input.GetKey(KeyCode.W))
+        transform.position += transform.forward * Time.deltaTime;
+        
+        if (Input.GetKey(KeyCode.A)) 
+            transform.Rotate(Vector3.up, 30*Time.deltaTime);
+        
+        if (Input.GetKey(KeyCode.S))
+            transform.Rotate(Vector3.down, 30*Time.deltaTime);
+        
+        if(Input.GetKey(KeyCode.D))
+            transform.Rotate(Vector3.left, 30*Time.deltaTime);
+
+       
+           
     }
 }
