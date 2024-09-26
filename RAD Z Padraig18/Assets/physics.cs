@@ -19,8 +19,8 @@ public class physics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
-            rb.AddExplosionForce(500,
-                transform.position + new Vector3(0, -1, 0), -1);
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+            rb.AddExplosionForce(5,
+                transform.position + new Vector3(0, -1, -1), 2);
     }
 }
