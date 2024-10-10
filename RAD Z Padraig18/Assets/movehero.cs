@@ -2,29 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class movehero : MonoBehaviour
+public class MyHero : MonoBehaviour
 {
+    Rigidbody rb;
+    public GameObject snowBallCloneTemplate;
+    Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
+        if (animator == null)
+            print("Could not find Animator Component");
+        else
+            print("Animator Component found");
     }
 
     // Update is called once per frame
     void Update()
-        {if (Input.GetKey(KeyCode.W))
-        transform.position += transform.forward * Time.deltaTime;
-        
-        if (Input.GetKey(KeyCode.A)) 
-            transform.Rotate(Vector3.up, 100*Time.deltaTime);
-        
-        if (Input.GetKey(KeyCode.S))
-            transform.Rotate(Vector3.down, 100*Time.deltaTime);
-        
-        if(Input.GetKey(KeyCode.D))
-            transform.Rotate(Vector3.left, 100*Time.deltaTime);
+    {
+        animator.SetBool("isRunning", false);
 
-       
-           
+        
+        if (Input.GetKey(KeyCode.W))
+
+        {
+            transform.position += transform.forward * Time.deltaTime;
+            animator.SetBool("isRunning", true);
+
+
+        }
+        if (Input.GetKey(KeyCode.A))
+            transform.Rotate(Vector3.up, 120 * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.S))
+            transform.position -= transform.forward * Time.deltaTime;
+
+        if (Input.GetKey(KeyCode.D))
+            transform.Rotate(Vector3.down, 120 * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.Q))
+            transform.position += Vector3.left * Time.deltaTime;
+
+        if (Input.GetKey(KeyCode.E))
+            transform.position += Vector3.right * Time.deltaTime;
     }
+
 }
+    
